@@ -29,7 +29,6 @@
     "deprecated"
   ] @attribute.builtin)
 
-
 (unstable_gate
   feature: (id) @string)
 
@@ -174,7 +173,6 @@
 ] @type
 
 "_" @variable.parameter.builtin
-
 
 [
   ";"

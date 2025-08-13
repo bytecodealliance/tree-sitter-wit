@@ -30,36 +30,18 @@ build:
 test *args: generate
     tree-sitter test {{ args }}
 
-[private]
-remove-local:
-    rm -rf ~/.local/share/nvim/lazy/nvim-treesitter/queries/wit
-
-# Install the queries locally
-install-local: remove-local
-    cp -r ./queries ~/.local/share/nvim/lazy/nvim-treesitter/queries/wit
-
 fmt:
-    eslint --fix grammar.js
+    npx eslint --fix grammar.js
     ts_query_ls format ./queries
     # topiary fmt ./examples/*.wit
     just --fmt --unstable
     nixfmt flake.nix shell.nix
-
-alias fmt-queries := format-queries
-
-# Format the queries
-format-queries:
-    nvim -l scripts/format-queries.lua
 
 # Lint all the things
 lint:
     npx eslint grammar.js
     typos
     just --fmt --unstable --check
-
-# Format the grammar
-format-grammar:
-    npx eslint --fix grammar.js
 
 # updates node package.json to latest available
 update:
