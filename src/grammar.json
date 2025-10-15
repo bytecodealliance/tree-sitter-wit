@@ -552,16 +552,24 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "id"
+          "type": "FIELD",
+          "name": "path",
+          "content": {
+            "type": "SYMBOL",
+            "name": "id"
+          }
         },
         {
           "type": "STRING",
           "value": "as"
         },
         {
-          "type": "SYMBOL",
-          "name": "id"
+          "type": "FIELD",
+          "name": "alias",
+          "content": {
+            "type": "SYMBOL",
+            "name": "id"
+          }
         }
       ]
     },
@@ -1063,13 +1071,8 @@
           "value": "{"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_record_fields"
-          },
-          "named": true,
-          "value": "fields"
+          "type": "SYMBOL",
+          "name": "_record_fields"
         },
         {
           "type": "STRING",
@@ -1173,13 +1176,8 @@
           "value": "{"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_flags_fields"
-          },
-          "named": true,
-          "value": "fields"
+          "type": "SYMBOL",
+          "name": "_flags_fields"
         },
         {
           "type": "STRING",
@@ -1268,13 +1266,8 @@
           "value": "{"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_variant_cases"
-          },
-          "named": true,
-          "value": "cases"
+          "type": "SYMBOL",
+          "name": "_variant_cases"
         },
         {
           "type": "STRING",
@@ -1395,13 +1388,8 @@
           "value": "{"
         },
         {
-          "type": "ALIAS",
-          "content": {
-            "type": "SYMBOL",
-            "name": "_enum_cases"
-          },
-          "named": true,
-          "value": "cases"
+          "type": "SYMBOL",
+          "name": "_enum_cases"
         },
         {
           "type": "STRING",

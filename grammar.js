@@ -137,7 +137,7 @@ module.exports = grammar({
       commaSeparatedList( $.alias_item),
 
     alias_item: $ =>
-      seq($.id, 'as', $.id),
+      seq(field('path', $.id), 'as', field('alias', $.id)),
     include_names_item: ($) => seq($.id, 'as', $.id),
 
     interface_item: ($) =>
@@ -202,18 +202,18 @@ module.exports = grammar({
 
     record_item: ($) =>
       seq('record', field('name', $.id), alias($._record_body, $.body)),
-    _record_body: ($) => seq('{', alias($._record_fields, $.fields), '}'),
+    _record_body: ($) => seq('{', $._record_fields, '}'),
     _record_fields: ($) => commaSeparatedList($.record_field),
     record_field: ($) => seq(field('name', $.id), ':', field('type', $.ty)),
 
     flags_items: ($) => seq('flags', field('name', $.id), alias($._flags_body, $.body)),
-    _flags_body: ($) => seq('{', alias($._flags_fields, $.fields), '}'),
+    _flags_body: ($) => seq('{', $._flags_fields, '}'),
     _flags_fields: ($) => commaSeparatedList(alias($.id, $.flags_field)),
 
     variant_items: ($) =>
       seq('variant', field('name', $.id), alias($._variant_body, $.body)),
     _variant_body: ($) =>
-      seq('{', alias($._variant_cases, $.cases), '}'),
+      seq('{', $._variant_cases, '}'),
 
     _variant_cases: ($) => commaSeparatedList($.variant_case),
     variant_case: ($) =>
@@ -223,7 +223,7 @@ module.exports = grammar({
       ),
 
     enum_items: ($) => seq('enum', field('name', $.id), alias($._enum_body, $.body)),
-    _enum_body: ($) => seq('{', alias($._enum_cases, $.cases), '}'),
+    _enum_body: ($) => seq('{', $._enum_cases, '}'),
     _enum_cases: ($) => commaSeparatedList(alias($.id, $.enum_case)),
 
     resource_item: ($) =>

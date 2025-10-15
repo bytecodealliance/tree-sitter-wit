@@ -21,10 +21,10 @@
 #define ALIAS_COUNT 2
 #define TOKEN_COUNT 74
 #define EXTERNAL_TOKEN_COUNT 4
-#define FIELD_COUNT 6
+#define FIELD_COUNT 7
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
-#define PRODUCTION_ID_COUNT 16
+#define PRODUCTION_ID_COUNT 17
 #define SUPERTYPE_COUNT 2
 
 enum ts_symbol_identifiers {
@@ -297,18 +297,18 @@ static const char * const ts_symbol_names[] = {
   [sym_type_item] = "type_item",
   [sym_record_item] = "record_item",
   [sym__record_body] = "body",
-  [sym__record_fields] = "fields",
+  [sym__record_fields] = "_record_fields",
   [sym_record_field] = "record_field",
   [sym_flags_items] = "flags_items",
   [sym__flags_body] = "body",
-  [sym__flags_fields] = "fields",
+  [sym__flags_fields] = "_flags_fields",
   [sym_variant_items] = "variant_items",
   [sym__variant_body] = "body",
-  [sym__variant_cases] = "cases",
+  [sym__variant_cases] = "_variant_cases",
   [sym_variant_case] = "variant_case",
   [sym_enum_items] = "enum_items",
   [sym__enum_body] = "body",
-  [sym__enum_cases] = "cases",
+  [sym__enum_cases] = "_enum_cases",
   [sym_resource_item] = "resource_item",
   [sym__resource_body] = "body",
   [sym_resource_method] = "resource_method",
@@ -462,14 +462,14 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_record_field] = sym_record_field,
   [sym_flags_items] = sym_flags_items,
   [sym__flags_body] = sym__world_body,
-  [sym__flags_fields] = sym__record_fields,
+  [sym__flags_fields] = sym__flags_fields,
   [sym_variant_items] = sym_variant_items,
   [sym__variant_body] = sym__world_body,
   [sym__variant_cases] = sym__variant_cases,
   [sym_variant_case] = sym_variant_case,
   [sym_enum_items] = sym_enum_items,
   [sym__enum_body] = sym__world_body,
-  [sym__enum_cases] = sym__variant_cases,
+  [sym__enum_cases] = sym__enum_cases,
   [sym_resource_item] = sym_resource_item,
   [sym__resource_body] = sym__world_body,
   [sym_resource_method] = sym_resource_method,
@@ -948,7 +948,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym__record_fields] = {
-    .visible = true,
+    .visible = false,
     .named = true,
   },
   [sym_record_field] = {
@@ -964,7 +964,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym__flags_fields] = {
-    .visible = true,
+    .visible = false,
     .named = true,
   },
   [sym_variant_items] = {
@@ -976,7 +976,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym__variant_cases] = {
-    .visible = true,
+    .visible = false,
     .named = true,
   },
   [sym_variant_case] = {
@@ -992,7 +992,7 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .named = true,
   },
   [sym__enum_cases] = {
-    .visible = true,
+    .visible = false,
     .named = true,
   },
   [sym_resource_item] = {
@@ -1151,8 +1151,9 @@ enum ts_field_identifiers {
   field_doc = 2,
   field_feature = 3,
   field_name = 4,
-  field_size = 5,
-  field_type = 6,
+  field_path = 5,
+  field_size = 6,
+  field_type = 7,
 };
 
 static const char * const ts_field_names[] = {
@@ -1161,6 +1162,7 @@ static const char * const ts_field_names[] = {
   [field_doc] = "doc",
   [field_feature] = "feature",
   [field_name] = "name",
+  [field_path] = "path",
   [field_size] = "size",
   [field_type] = "type",
 };
@@ -1177,6 +1179,7 @@ static const TSMapSlice ts_field_map_slices[PRODUCTION_ID_COUNT] = {
   [11] = {.index = 7, .length = 2},
   [12] = {.index = 9, .length = 2},
   [15] = {.index = 11, .length = 2},
+  [16] = {.index = 13, .length = 2},
 };
 
 static const TSFieldMapEntry ts_field_map_entries[] = {
@@ -1201,6 +1204,9 @@ static const TSFieldMapEntry ts_field_map_entries[] = {
     {field_name, 0},
     {field_type, 2},
   [11] =
+    {field_alias, 2},
+    {field_path, 0},
+  [13] =
     {field_size, 3},
     {field_size, 4},
 };
@@ -10613,7 +10619,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [419] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_option, 4, 0, 0),
   [421] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_list, 4, 0, 0),
   [423] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_ty, 1, 0, 0),
-  [425] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_list, 6, 0, 15),
+  [425] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_list, 6, 0, 16),
   [427] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_use_path, 1, 0, 0),
   [429] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_result, 6, 0, 0),
   [431] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_result, 4, 0, 0),
@@ -10737,7 +10743,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [676] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_param_list, 3, 0, 0),
   [678] = {.entry = {.count = 1, .reusable = true}}, SHIFT(370),
   [680] = {.entry = {.count = 1, .reusable = true}}, SHIFT(304),
-  [682] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_alias_item, 3, 0, 0),
+  [682] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_alias_item, 3, 0, 15),
   [684] = {.entry = {.count = 1, .reusable = true}}, SHIFT(129),
   [686] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_variant_case, 4, 0, 12),
   [688] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_named_type, 3, 0, 12),

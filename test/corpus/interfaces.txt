@@ -111,30 +111,26 @@ interface foo {
       (record_item
         name: (id)
         (body
-          (fields
-            (record_field
-              name: (id)
-              type: (ty)))))
+          (record_field
+            name: (id)
+            type: (ty))))
       (flags_items
         name: (id)
         (body
-          (fields
-            (flags_field)
-            (flags_field))))
+          (flags_field)
+          (flags_field)))
       (enum_items
         name: (id)
         (body
-          (cases
-            (enum_case)
-            (enum_case))))
+          (enum_case)
+          (enum_case)))
       (variant_items
         name: (id)
         (body
-          (cases
-            (variant_case
-              name: (id))
-            (variant_case
-              name: (id))))))))
+          (variant_case
+            name: (id))
+          (variant_case
+            name: (id)))))))
 
 ==================
 Use Items

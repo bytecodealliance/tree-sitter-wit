@@ -270,13 +270,12 @@ interface calc {
       (variant_items
         (id)
         (body
-          (cases
-            (variant_case
-              (id))
-            (variant_case
-              (id))
-            (variant_case
-              (id)))))
+          (variant_case
+            (id))
+          (variant_case
+            (id))
+          (variant_case
+            (id))))
       (since_gate
         (version))
       (func_item

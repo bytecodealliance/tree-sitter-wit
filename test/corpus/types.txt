@@ -144,27 +144,23 @@ interface foo {
       (record_item
         (id)
         (body
-          (fields
-            (record_field
-              (id)
-              (ty)))))
+          (record_field
+            (id)
+            (ty))))
       (flags_items
         (id)
         (body
-          (fields
-            (flags_field)
-            (flags_field))))
+          (flags_field)
+          (flags_field)))
       (enum_items
         (id)
         (body
-          (cases
-            (enum_case)
-            (enum_case))))
+          (enum_case)
+          (enum_case)))
       (variant_items
         (id)
         (body
-          (cases
-            (variant_case
-              (id))
-            (variant_case
-              (id))))))))
+          (variant_case
+            (id))
+          (variant_case
+            (id)))))))

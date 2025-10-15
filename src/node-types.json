@@ -50,16 +50,27 @@
   {
     "type": "alias_item",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "id",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -96,7 +107,7 @@
           "named": true
         },
         {
-          "type": "cases",
+          "type": "enum_case",
           "named": true
         },
         {
@@ -104,7 +115,7 @@
           "named": true
         },
         {
-          "type": "fields",
+          "type": "flags_field",
           "named": true
         },
         {
@@ -120,26 +131,15 @@
           "named": true
         },
         {
+          "type": "record_field",
+          "named": true
+        },
+        {
           "type": "resource_method",
           "named": true
         },
         {
           "type": "use_item",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "cases",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "enum_case",
           "named": true
         },
         {
@@ -253,25 +253,6 @@
         },
         {
           "type": "func_type",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "fields",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "flags_field",
-          "named": true
-        },
-        {
-          "type": "record_field",
           "named": true
         }
       ]

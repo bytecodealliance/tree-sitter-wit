@@ -60,43 +60,39 @@ interface foo {
       (record_item
         (id)
         (body
-          (fields
-            (record_field
-              (id)
-              (ty))
-            (record_field
-              (id)
-              (ty)))))
+          (record_field
+            (id)
+            (ty))
+          (record_field
+            (id)
+            (ty))))
       (line_comment)
       (variant_items
         (id)
         (body
-          (cases
-            (variant_case
-              (id))
-            (variant_case
-              (id)
-              (ty))
-            (line_comment)
-            (variant_case
-              (id)))))
+          (variant_case
+            (id))
+          (variant_case
+            (id)
+            (ty))
+          (line_comment)
+          (variant_case
+            (id))))
       (line_comment)
       (enum_items
         (id)
         (body
-          (cases
-            (enum_case)
-            (enum_case)
-            (enum_case)
-            (enum_case))))
+          (enum_case)
+          (enum_case)
+          (enum_case)
+          (enum_case)))
       (line_comment)
       (flags_items
         (id)
         (body
-          (fields
-            (flags_field)
-            (flags_field)
-            (flags_field))))
+          (flags_field)
+          (flags_field)
+          (flags_field)))
       (line_comment)
       (line_comment)
       (type_item
