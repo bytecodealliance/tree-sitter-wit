@@ -82,22 +82,7 @@
   {
     "type": "body",
     "named": true,
-    "fields": {
-      "record_fields": {
-        "multiple": true,
-        "required": false,
-        "types": [
-          {
-            "type": ",",
-            "named": false
-          },
-          {
-            "type": "record_field",
-            "named": true
-          }
-        ]
-      }
-    },
+    "fields": {},
     "children": {
       "multiple": true,
       "required": false,
@@ -111,7 +96,7 @@
           "named": true
         },
         {
-          "type": "enum_cases",
+          "type": "cases",
           "named": true
         },
         {
@@ -119,11 +104,11 @@
           "named": true
         },
         {
-          "type": "func_item",
+          "type": "fields",
           "named": true
         },
         {
-          "type": "id",
+          "type": "func_item",
           "named": true
         },
         {
@@ -141,9 +126,24 @@
         {
           "type": "use_item",
           "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "cases",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "enum_case",
+          "named": true
         },
         {
-          "type": "variant_cases",
+          "type": "variant_case",
           "named": true
         }
       ]
@@ -178,37 +178,6 @@
       "types": [
         {
           "type": "version",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "enum_case",
-    "named": true,
-    "fields": {
-      "name": {
-        "multiple": false,
-        "required": true,
-        "types": [
-          {
-            "type": "id",
-            "named": true
-          }
-        ]
-      }
-    }
-  },
-  {
-    "type": "enum_cases",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "enum_case",
           "named": true
         }
       ]
@@ -284,6 +253,25 @@
         },
         {
           "type": "func_type",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fields",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "flags_field",
+          "named": true
+        },
+        {
+          "type": "record_field",
           "named": true
         }
       ]
@@ -1013,21 +1001,6 @@
     }
   },
   {
-    "type": "variant_cases",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "variant_case",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "variant_items",
     "named": true,
     "fields": {
@@ -1184,6 +1157,10 @@
     "named": false
   },
   {
+    "type": "enum_case",
+    "named": true
+  },
+  {
     "type": "export",
     "named": false
   },
@@ -1202,6 +1179,10 @@
   {
     "type": "flags",
     "named": false
+  },
+  {
+    "type": "flags_field",
+    "named": true
   },
   {
     "type": "func",

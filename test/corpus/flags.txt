@@ -19,6 +19,7 @@ interface foo {
       (flags_items
         (id)
         (body
-          (id)
-          (id)
-          (id))))))
+          (fields
+            (flags_field)
+            (flags_field)
+            (flags_field)))))))

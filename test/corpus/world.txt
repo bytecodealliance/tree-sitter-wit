@@ -270,7 +270,7 @@ interface calc {
       (variant_items
         (id)
         (body
-          (variant_cases
+          (cases
             (variant_case
               (id))
             (variant_case
