@@ -135,7 +135,7 @@ world union-my-world-b {
         (use_path
           (id))
         (definitions
-          (alias_item
+          (include_names_item
             (id)
             (id))))))
   (world_item
@@ -202,7 +202,7 @@ world union-my-world-b {
         (use_path
           (id))
         (definitions
-          (alias_item
+          (include_names_item
             (id)
             (id))))))
   (world_item
@@ -270,13 +270,12 @@ interface calc {
       (variant_items
         (id)
         (body
-          (variant_cases
-            (variant_case
-              (id))
-            (variant_case
-              (id))
-            (variant_case
-              (id)))))
+          (variant_case
+            (id))
+          (variant_case
+            (id))
+          (variant_case
+            (id))))
       (since_gate
         (version))
       (func_item

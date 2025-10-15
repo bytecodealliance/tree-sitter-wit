@@ -7,8 +7,6 @@
 /// <reference types="tree-sitter-cli/dsl" />
 // @ts-check
 
-const optionalCommaSeparatedList = (rule) => optional(commaSeparatedList(rule));
-
 const commaSeparatedList = (rule) =>
   seq(rule, repeat(seq(',', rule)), optional(','));
 
@@ -136,10 +134,11 @@ module.exports = grammar({
       seq('{', $._include_names_list, '}'),
 
     _include_names_list: ($) =>
-      commaSeparatedList( $.alias_item),
+      commaSeparatedList( $.include_names_item),
+    include_names_item: ($) => $.alias_item,
 
     alias_item: $ =>
-      seq($.id, 'as', $.id),
+      seq(field('path', $.id), 'as', field('alias', $.id)),
     include_names_item: ($) => seq($.id, 'as', $.id),
 
     interface_item: ($) =>
@@ -204,31 +203,20 @@ module.exports = grammar({
 
     record_item: ($) =>
       seq('record', field('name', $.id), alias($._record_body, $.body)),
-
-    _record_body: ($) =>
-      seq(
-        '{',
-        field('record_fields', optionalCommaSeparatedList($.record_field)),
-        '}',
-      ),
-
+    _record_body: ($) => seq('{', $._record_fields, '}'),
+    _record_fields: ($) => commaSeparatedList($.record_field),
     record_field: ($) => seq(field('name', $.id), ':', field('type', $.ty)),
 
-    flags_items: ($) =>
-      seq('flags', field('name', $.id), alias($._flags_body, $.body)),
-
-    _flags_body: ($) =>
-      seq('{', optionalCommaSeparatedList($.id), '}'),
+    flags_items: ($) => seq('flags', field('name', $.id), alias($._flags_body, $.body)),
+    _flags_body: ($) => seq('{', $._flags_fields, '}'),
+    _flags_fields: ($) => commaSeparatedList(alias($.id, $.flags_field)),
 
     variant_items: ($) =>
       seq('variant', field('name', $.id), alias($._variant_body, $.body)),
-
     _variant_body: ($) =>
-      seq('{', $.variant_cases, '}'),
+      seq('{', $._variant_cases, '}'),
 
-    variant_cases: ($) =>
-      commaSeparatedList($.variant_case),
-
+    _variant_cases: ($) => commaSeparatedList($.variant_case),
     variant_case: ($) =>
       choice(
         field('name', $.id),
@@ -236,15 +224,8 @@ module.exports = grammar({
       ),
 
     enum_items: ($) => seq('enum', field('name', $.id), alias($._enum_body, $.body)),
-
-    _enum_body: ($) =>
-      seq('{', $.enum_cases, '}'),
-
-    enum_cases: ($) =>
-      commaSeparatedList($.enum_case),
-
-    enum_case: ($) =>
-      field('name', $.id),
+    _enum_body: ($) => seq('{', $._enum_cases, '}'),
+    _enum_cases: ($) => commaSeparatedList(alias($.id, $.enum_case)),
 
     resource_item: ($) =>
       seq(
@@ -258,9 +239,7 @@ module.exports = grammar({
     resource_method: ($) =>
       choice(
         $.func_item,
-        // TODO defer `foo: async async func() -> T;` case
-        // https://github.com/WebAssembly/component-model/blob/main/design/mvp/WIT.md#item-resource
-        seq($.id, ':', 'static', /* optional('async'), */ $.func_type, ';'),
+        seq($.id, ':', 'static', $.func_type, ';'),
         seq('constructor', $.param_list, ';'),
       ),
 

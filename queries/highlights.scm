@@ -79,8 +79,7 @@
 (flags_items
   name: (id) @type)
 
-(body
-  (id) @variable.member)
+(flags_field) @variable.member
 
 (variant_items
   name: (id) @type)
@@ -91,8 +90,7 @@
 (enum_items
   name: (id) @type)
 
-(enum_case
-  name: (id) @constant)
+(enum_case) @constant
 
 (resource_item
   name: (id) @type)
@@ -114,6 +112,9 @@
 
 (use_path
   (id) @module)
+
+(alias_item
+  alias: (id) @module)
 
 (use_names_item
   (id) @module)

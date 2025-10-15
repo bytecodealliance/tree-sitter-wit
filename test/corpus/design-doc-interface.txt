@@ -70,35 +70,29 @@ interface foo {
       (variant_items
         (id)
         (body
-          (variant_cases
-            (variant_case
-              (id))
-            (variant_case
-              (id)
-              (ty))
-            (line_comment)
-            (variant_case
-              (id)))))
+          (variant_case
+            (id))
+          (variant_case
+            (id)
+            (ty))
+          (line_comment)
+          (variant_case
+            (id))))
       (line_comment)
       (enum_items
         (id)
         (body
-          (enum_cases
-            (enum_case
-              (id))
-            (enum_case
-              (id))
-            (enum_case
-              (id))
-            (enum_case
-              (id)))))
+          (enum_case)
+          (enum_case)
+          (enum_case)
+          (enum_case)))
       (line_comment)
       (flags_items
         (id)
         (body
-          (id)
-          (id)
-          (id)))
+          (flags_field)
+          (flags_field)
+          (flags_field)))
       (line_comment)
       (line_comment)
       (type_item

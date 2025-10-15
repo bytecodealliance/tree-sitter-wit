@@ -17,9 +17,6 @@ interface foo {
         fn2: func(%p: borrow<string>) -> result<u32, aaa>;
     }
 
-    record rec1 {
-    }
-
     record rec2 {
         num: u32,
     }
@@ -146,9 +143,6 @@ interface foo {
                         (id))))))))))
       (record_item
         (id)
-        (body))
-      (record_item
-        (id)
         (body
           (record_field
             (id)
@@ -156,21 +150,17 @@ interface foo {
       (flags_items
         (id)
         (body
-          (id)
-          (id)))
+          (flags_field)
+          (flags_field)))
       (enum_items
         (id)
         (body
-          (enum_cases
-            (enum_case
-              (id))
-            (enum_case
-              (id)))))
+          (enum_case)
+          (enum_case)))
       (variant_items
         (id)
         (body
-          (variant_cases
-            (variant_case
-              (id))
-            (variant_case
-              (id))))))))
+          (variant_case
+            (id))
+          (variant_case
+            (id)))))))
