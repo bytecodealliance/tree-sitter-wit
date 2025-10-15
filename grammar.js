@@ -134,7 +134,8 @@ module.exports = grammar({
       seq('{', $._include_names_list, '}'),
 
     _include_names_list: ($) =>
-      commaSeparatedList( $.alias_item),
+      commaSeparatedList( $.include_names_item),
+    include_names_item: ($) => $.alias_item,
 
     alias_item: $ =>
       seq(field('path', $.id), 'as', field('alias', $.id)),

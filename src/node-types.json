@@ -158,7 +158,7 @@
       "required": true,
       "types": [
         {
-          "type": "alias_item",
+          "type": "include_names_item",
           "named": true
         },
         {
@@ -403,6 +403,21 @@
         },
         {
           "type": "use_path",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "include_names_item",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "id",
           "named": true
         }
       ]

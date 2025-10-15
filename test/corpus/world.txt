@@ -135,7 +135,7 @@ world union-my-world-b {
         (use_path
           (id))
         (definitions
-          (alias_item
+          (include_names_item
             (id)
             (id))))))
   (world_item
@@ -202,7 +202,7 @@ world union-my-world-b {
         (use_path
           (id))
         (definitions
-          (alias_item
+          (include_names_item
             (id)
             (id))))))
   (world_item

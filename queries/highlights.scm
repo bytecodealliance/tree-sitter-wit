@@ -113,6 +113,9 @@
 (use_path
   (id) @module)
 
+(alias_item
+  alias: (id) @module)
+
 (use_names_item
   (id) @module)
 
