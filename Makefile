@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-wit
 HOMEPAGE_URL := https://github.com/liamwh/tree-sitter-wit
-VERSION := 1.2.0
+VERSION := 1.3.0
 
 # repository
 SRC_DIR := src

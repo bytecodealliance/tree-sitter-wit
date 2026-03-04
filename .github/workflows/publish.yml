@@ -14,7 +14,6 @@ jobs:
     uses: tree-sitter/workflows/.github/workflows/release.yml@main
     with:
       generate: true
-      attestations: true
   # TODO
   # npm:
   #   uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
