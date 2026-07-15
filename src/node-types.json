@@ -115,6 +115,10 @@
           "named": true
         },
         {
+          "type": "external_id",
+          "named": true
+        },
+        {
           "type": "flags_field",
           "named": true
         },
@@ -144,6 +148,25 @@
         },
         {
           "type": "variant_case",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "decl_head",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "id",
+          "named": true
+        },
+        {
+          "type": "version",
           "named": true
         }
       ]
@@ -225,11 +248,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "extern_type",
+          "named": true
+        },
+        {
+          "type": "external_id",
           "named": true
         },
         {
@@ -254,8 +281,28 @@
         {
           "type": "func_type",
           "named": true
+        },
+        {
+          "type": "use_path",
+          "named": true
         }
       ]
+    }
+  },
+  {
+    "type": "external_id",
+    "named": true,
+    "fields": {
+      "id": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "string_literal",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -375,11 +422,15 @@
       }
     },
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "extern_type",
+          "named": true
+        },
+        {
+          "type": "external_id",
           "named": true
         },
         {
@@ -411,16 +462,27 @@
   {
     "type": "include_names_item",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "id",
-          "named": true
-        }
-      ]
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id",
+            "named": true
+          }
+        ]
+      },
+      "path": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "id",
+            "named": true
+          }
+        ]
+      }
     }
   },
   {
@@ -452,6 +514,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "kt",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "line_comment",
@@ -501,6 +568,32 @@
     }
   },
   {
+    "type": "map",
+    "named": true,
+    "fields": {
+      "key": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "kt",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "ty",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "named_type",
     "named": true,
     "fields": {
@@ -527,6 +620,33 @@
     }
   },
   {
+    "type": "nested_package_definition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "decl_head",
+          "named": true
+        },
+        {
+          "type": "interface_item",
+          "named": true
+        },
+        {
+          "type": "toplevel_use_item",
+          "named": true
+        },
+        {
+          "type": "world_item",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "option",
     "named": true,
     "fields": {},
@@ -546,15 +666,11 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": true,
+      "multiple": false,
       "required": true,
       "types": [
         {
-          "type": "id",
-          "named": true
-        },
-        {
-          "type": "version",
+          "type": "decl_head",
           "named": true
         }
       ]
@@ -656,7 +772,18 @@
   {
     "type": "resource_method",
     "named": true,
-    "fields": {},
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "id",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": true,
@@ -670,11 +797,11 @@
           "named": true
         },
         {
-          "type": "id",
+          "type": "param_list",
           "named": true
         },
         {
-          "type": "param_list",
+          "type": "result_list",
           "named": true
         }
       ]
@@ -740,6 +867,10 @@
       "types": [
         {
           "type": "interface_item",
+          "named": true
+        },
+        {
+          "type": "nested_package_definition",
           "named": true
         },
         {
@@ -850,6 +981,10 @@
         },
         {
           "type": "list",
+          "named": true
+        },
+        {
+          "type": "map",
           "named": true
         },
         {
@@ -1161,6 +1296,10 @@
     "named": false
   },
   {
+    "type": "external-id",
+    "named": false
+  },
+  {
     "type": "f32",
     "named": false
   },
@@ -1206,6 +1345,10 @@
   },
   {
     "type": "list",
+    "named": false
+  },
+  {
+    "type": "map",
     "named": false
   },
   {
@@ -1259,6 +1402,10 @@
   {
     "type": "string",
     "named": false
+  },
+  {
+    "type": "string_literal",
+    "named": true
   },
   {
     "type": "tuple",
