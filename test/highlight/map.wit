@@ -1,0 +1,49 @@
+package local:demo {
+// <- keyword.type
+//      ^ module
+//            ^ module
+    interface store {
+    // <- keyword.type
+    //        ^ module
+        @external-id("DB.Bar")
+        // <- punctuation.special
+        //  ^ attribute.builtin
+        //             ^ string
+        resource blob {
+        // <- keyword.type
+        //       ^ type
+            constructor(init: list<u8>) -> result<blob>;
+            // <- constructor
+            //          ^ variable.parameter
+            //                ^ type
+            //                     ^ type.builtin
+            //                             ^ type
+            //                                    ^ type
+        }
+
+        type headers = map<string, string>;
+        //   ^ type.definition
+        //             ^ type
+        //                 ^ type.builtin
+        //                         ^ type.builtin
+
+        type counts = map<u32, u64>;
+        //            ^ type
+        //                ^ type.builtin
+        //                     ^ type.builtin
+
+        @external-id("lookup/1")
+        //  ^ attribute.builtin
+        //             ^ string
+        lookup: func(m: map<char, list<u8>>) -> map<bool, string>;
+        // <- function.method
+        //           ^ variable.parameter
+        //              ^ type
+        //                  ^ type.builtin
+        //                        ^ type
+        //                             ^ type.builtin
+        //                                      ^ type
+        //                                          ^ type.builtin
+        //                                                ^ type.builtin
+    }
+}

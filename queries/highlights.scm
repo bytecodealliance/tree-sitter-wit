@@ -1,7 +1,7 @@
 (ty
   (id)) @type
 
-(package_decl
+(decl_head
   (id) @module)
 
 (version) @string.special
@@ -12,7 +12,7 @@
     "/"
   ] @punctuation.delimiter)
 
-(package_decl
+(decl_head
   [
     "@"
     "/"
@@ -121,6 +121,12 @@
 
 "func" @keyword.function
 
+(external_id
+  "@" @punctuation.special
+  "external-id" @attribute.builtin
+  id: (string_literal) @string)
+
+
 [
   "type"
   "interface"
@@ -168,6 +174,7 @@
   "list"
   "option"
   "result"
+  "map"
   "borrow"
   "future"
   "stream"
