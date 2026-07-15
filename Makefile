@@ -1,6 +1,6 @@
 LANGUAGE_NAME := tree-sitter-wit
 HOMEPAGE_URL := https://github.com/liamwh/tree-sitter-wit
-VERSION := 1.2.0
+VERSION := 1.4.0
 DESCRIPTION := WIT grammar for tree-sitter
 
 # repository

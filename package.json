@@ -1,12 +1,13 @@
 {
   "name": "tree-sitter-wit",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "description": "WIT grammar for tree-sitter",
   "author": "Liam Woodleigh-Hardinge <liam.woodleigh@gmail.com>",
   "license": "Apache-2.0 WITH LLVM-exception",
   "maintainers": [
     "Liam Woodleigh-Hardinge <liam.woodleigh@gmail.com>"
   ],
+  "type": "module",
   "contributors": [
     "Liam Woodleigh-Hardinge <liam.woodleigh@gmail.com>"
   ],
