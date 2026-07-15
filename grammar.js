@@ -10,7 +10,7 @@
 const commaSeparatedList = (rule) =>
   seq(rule, repeat(seq(',', rule)), optional(','));
 
-module.exports = grammar({
+export default grammar({
   name: 'wit',
 
   extras: $ => [
