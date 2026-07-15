@@ -32,10 +32,10 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-14]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@eeb902ac2f1be576edc296309872cf476a209b7f # v2
+        uses: tree-sitter/setup-action/cli@1868a545ffb91bdc221d14a168b5b6d8de4a28b3 # v2
 
       - name: Run tests
         uses: tree-sitter/parser-test-action@05f6ce7c7e54603c45cd87ed926725dc870bcc63 # v3
