@@ -10,18 +10,21 @@ package wasmi:io:print;
 
 (source_file
   (package_decl
-    (id)
-    (id))
+    (decl_head
+      (id)
+      (id)))
   (package_decl
-    (id)
-    (id)
-    (id)
-    (id)
-    (version))
+    (decl_head
+      (id)
+      (id)
+      (id)
+      (id)
+      (version)))
   (package_decl
-    (id)
-    (id)
-    (id)))
+    (decl_head
+      (id)
+      (id)
+      (id))))
 
 ==================
 Top-level Use Item
@@ -47,3 +50,44 @@ use wasi:io:hello/epic as cool;
       (id)
       (id))
     (id)))
+
+==================
+Nested Package Definitions
+==================
+
+package root:a;
+
+package local:a {
+    interface foo {}
+}
+
+package local:b@1.0.0 {
+    interface bar {}
+    world w {}
+}
+
+---
+
+(source_file
+  (package_decl
+    (decl_head
+      (id)
+      (id)))
+  (nested_package_definition
+    (decl_head
+      (id)
+      (id))
+    (interface_item
+      name: (id)
+      (body)))
+  (nested_package_definition
+    (decl_head
+      (id)
+      (id)
+      (version))
+    (interface_item
+      name: (id)
+      (body))
+    (world_item
+      name: (id)
+      (body))))

@@ -19,19 +19,22 @@ package tree-sitter:wit@1.0.0;
   (line_comment)
   (line_comment)
   (package_decl
-    (id)
-    (id)
-    (version))
+    (decl_head
+      (id)
+      (id)
+      (version)))
   (block_comment)
   (package_decl
-    (id)
-    (id)
-    (version))
+    (decl_head
+      (id)
+      (id)
+      (version)))
   (block_comment)
   (package_decl
-    (id)
-    (id)
-    (version)))
+    (decl_head
+      (id)
+      (id)
+      (version))))
 
 ==================
 Doc comments
@@ -53,18 +56,21 @@ package tree-sitter:wit@1.0.0;
   (line_comment
     (doc_comment))
   (package_decl
-    (id)
-    (id)
-    (version))
+    (decl_head
+      (id)
+      (id)
+      (version)))
   (block_comment
     (doc_comment))
   (package_decl
-    (id)
-    (id)
-    (version))
+    (decl_head
+      (id)
+      (id)
+      (version)))
   (block_comment
     (doc_comment))
   (package_decl
-    (id)
-    (id)
-    (version)))
+    (decl_head
+      (id)
+      (id)
+      (version))))

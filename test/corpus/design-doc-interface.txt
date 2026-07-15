@@ -51,8 +51,9 @@ interface foo {
 
 (source_file
   (package_decl
-    (id)
-    (id))
+    (decl_head
+      (id)
+      (id)))
   (interface_item
     (id)
     (body

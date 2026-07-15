@@ -107,8 +107,9 @@ world union-my-world-b {
 
 (source_file
   (package_decl
-    (id)
-    (id))
+    (decl_head
+      (id)
+      (id)))
   (world_item
     (id)
     (body
@@ -174,8 +175,9 @@ world union-my-world-b {
 
 (source_file
   (package_decl
-    (id)
-    (id))
+    (decl_head
+      (id)
+      (id)))
   (world_item
     (id)
     (body
@@ -297,3 +299,126 @@ interface calc {
                   (id))
                 (ty
                   (id))))))))))
+
+==================
+Named interface imports and exports
+==================
+
+world my-world {
+    import primary: wasi:keyvalue/store;
+    import secondary: wasi:keyvalue/store;
+    export my-handler: wasi:http/handler;
+    import cache: store;
+}
+
+---
+
+(source_file
+  (world_item
+    name: (id)
+    (body
+      (import_item
+        name: (id)
+        (extern_type
+          (use_path
+            (id)
+            (id)
+            (id))))
+      (import_item
+        name: (id)
+        (extern_type
+          (use_path
+            (id)
+            (id)
+            (id))))
+      (export_item
+        name: (id)
+        (extern_type
+          (use_path
+            (id)
+            (id)
+            (id))))
+      (import_item
+        name: (id)
+        (extern_type
+          (use_path
+            (id)))))))
+
+==================
+External IDs
+==================
+
+world my-component {
+    @external-id("https://esm.unpkg.com/slugify@1.6.6")
+    import slugify: func(text: string) -> string;
+
+    @external-id("user-db-prod:region-a")
+    import users: wasi:keyvalue/store;
+}
+
+interface my-interface {
+    @external-id("foo/0")
+    foo: func() -> string;
+
+    @external-id("DB.Bar")
+    resource bar {
+        @external-id("baz/1")
+        baz: func(s: string) -> string;
+    }
+}
+
+---
+
+(source_file
+  (world_item
+    name: (id)
+    (body
+      (import_item
+        (external_id
+          id: (string_literal))
+        name: (id)
+        (extern_type
+          (func_type
+            (param_list
+              (named_type
+                name: (id)
+                type: (ty)))
+            (result_list
+              (ty)))))
+      (import_item
+        (external_id
+          id: (string_literal))
+        name: (id)
+        (extern_type
+          (use_path
+            (id)
+            (id)
+            (id))))))
+  (interface_item
+    name: (id)
+    (body
+      (external_id
+        id: (string_literal))
+      (func_item
+        name: (id)
+        (func_type
+          (param_list)
+          (result_list
+            (ty))))
+      (external_id
+        id: (string_literal))
+      (resource_item
+        name: (id)
+        (body
+          (external_id
+            id: (string_literal))
+          (resource_method
+            (func_item
+              name: (id)
+              (func_type
+                (param_list
+                  (named_type
+                    name: (id)
+                    type: (ty)))
+                (result_list
+                  (ty))))))))))
