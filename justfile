@@ -46,7 +46,7 @@ lint:
 # updates node package.json to latest available
 update:
     pnpm outdated --format json | jq  'keys[]' | xargs pnpm update
-    cargo upgrade && cargo update
+    cargo upgrade --incompatible && cargo update
 
 # updates node package.json to latest available
 outdated:
