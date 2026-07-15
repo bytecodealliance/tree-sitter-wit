@@ -164,3 +164,49 @@ interface foo {
             (id))
           (variant_case
             (id)))))))
+
+==================
+Map type
+==================
+
+interface foo {
+    type headers = map<string, string>;
+    type counts = map<u32, u64>;
+    fn1: func(m: map<char, list<u8>>) -> map<bool, string>;
+}
+
+---
+
+(source_file
+  (interface_item
+    name: (id)
+    (body
+      (type_item
+        alias: (id)
+        type: (ty
+          (map
+            key: (kt)
+            value: (ty))))
+      (type_item
+        alias: (id)
+        type: (ty
+          (map
+            key: (kt)
+            value: (ty))))
+      (func_item
+        name: (id)
+        (func_type
+          (param_list
+            (named_type
+              name: (id)
+              type: (ty
+                (map
+                  key: (kt)
+                  value: (ty
+                    (list
+                      (ty)))))))
+          (result_list
+            (ty
+              (map
+                key: (kt)
+                value: (ty)))))))))

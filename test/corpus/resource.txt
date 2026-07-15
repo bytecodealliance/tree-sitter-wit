@@ -67,3 +67,52 @@ interface filesystem {
               (result_list
                 (ty
                   (id))))))))))
+
+==================
+Fallible constructors
+==================
+
+interface types {
+    resource blob {
+        constructor(init: list<u8>) -> result<blob>;
+    }
+    resource err {
+        constructor(x: u32) -> result<err, string>;
+    }
+}
+
+---
+
+(source_file
+  (interface_item
+    (id)
+    (body
+      (resource_item
+        (id)
+        (body
+          (resource_method
+            (param_list
+              (named_type
+                (id)
+                (ty
+                  (list
+                    (ty)))))
+            (result_list
+              (ty
+                (result
+                  (ty
+                    (id))))))))
+      (resource_item
+        (id)
+        (body
+          (resource_method
+            (param_list
+              (named_type
+                (id)
+                (ty)))
+            (result_list
+              (ty
+                (result
+                  (ty
+                    (id))
+                  (ty))))))))))
