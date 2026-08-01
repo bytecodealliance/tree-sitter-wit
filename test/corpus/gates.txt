@@ -1,0 +1,149 @@
+==================
+Nested gates
+==================
+
+interface my-interface {
+    resource blob {
+      @since(version = 0.2.0)
+      constructor(init: list<u8>);
+
+      @since(version = 0.3.0)
+      @unstable(feature = merge)
+      merge: static func(lhs: blob, rhs: blob) -> blob;
+    }
+
+    record customer {
+      @since(version = 0.2.0)
+      @deprecated(version = 0.3.0)
+      id: u64,
+
+      @since(version = 0.2.0)
+      name: string
+    }
+
+    variant allowed-destinations {
+      @since(version = 0.2.0)
+      none,
+
+      @since(version = 0.2.0)
+      @deprecated(version = 0.3.0)
+      any,
+
+      @since(version = 0.3.0)
+      @unstable(feature = restricted)
+      restricted(list<address>),
+    }
+
+    flags allowed-methods {
+      @since(version = 0.2.0)
+      get,
+
+      @since(version = 0.2.0)
+      post,
+    }
+
+    enum color {
+      @since(version = 0.2.0)
+      hot-pink,
+
+      @since(version = 0.2.0)
+      @deprecated(version = 0.3.0)
+      lime-green,
+    }
+}
+
+---
+
+(source_file
+  (interface_item
+    name: (id)
+    (body
+      (resource_item
+        name: (id)
+        (body
+          (since_gate
+            (version))
+          (resource_method
+            (param_list
+              (named_type
+                name: (id)
+                type: (ty
+                  (list
+                    (ty))))))
+          (since_gate
+            (version))
+          (unstable_gate
+            feature: (id))
+          (resource_method
+            name: (id)
+            (func_type
+              (param_list
+                (named_type
+                  name: (id)
+                  type: (ty
+                    (id)))
+                (named_type
+                  name: (id)
+                  type: (ty
+                    (id))))
+              (result_list
+                (ty
+                  (id)))))))
+      (record_item
+        name: (id)
+        (body
+          (since_gate
+            (version))
+          (deprecated_gate
+            (version))
+          (record_field
+            name: (id)
+            type: (ty))
+          (since_gate
+            (version))
+          (record_field
+            name: (id)
+            type: (ty))))
+      (variant_items
+        name: (id)
+        (body
+          (since_gate
+            (version))
+          (variant_case
+            name: (id))
+          (since_gate
+            (version))
+          (deprecated_gate
+            (version))
+          (variant_case
+            name: (id))
+          (since_gate
+            (version))
+          (unstable_gate
+            feature: (id))
+          (variant_case
+            name: (id)
+            type: (ty
+              (list
+                (ty
+                  (id)))))))
+      (flags_items
+        name: (id)
+        (body
+          (since_gate
+            (version))
+          (flags_field)
+          (since_gate
+            (version))
+          (flags_field)))
+      (enum_items
+        name: (id)
+        (body
+          (since_gate
+            (version))
+          (enum_case)
+          (since_gate
+            (version))
+          (deprecated_gate
+            (version))
+          (enum_case))))))

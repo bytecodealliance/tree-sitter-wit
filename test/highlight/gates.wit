@@ -3,10 +3,10 @@
 // ^ attribute.builtin
 world imports {
     @since(version = 0.1.0)
- // ^ punctuation.special
- //  ^ attribute.builtin
+    // <- punctuation.special
+    //  ^ attribute.builtin
     @unstable(feature = fancier-foo)
- //  ^ attribute.builtin
+    // ^ attribute.builtin
     //                  ^ string
     import streams;
     @deprecated(version = 0.1.0)
@@ -23,5 +23,29 @@ interface calc {
 
     @since(version = 0.1.0)
     add: func(x: s32, y: s32) -> result<s32, calc-error>;
+
+    variant allowed-destinations {
+      @since(version = 0.2.0)
+      // <- punctuation.special
+      //  ^ attribute.builtin
+      //               ^ string.special
+      none,
+
+      @since(version = 0.2.0)
+      // <- punctuation.special
+      //  ^ attribute.builtin
+      @deprecated(version = 0.3.0)
+      //                    ^ string.special
+      any,
+
+      @since(version = 0.3.0)
+      //  ^ attribute.builtin
+      //               ^ string.special
+      @unstable(feature = restricted)
+      // <- punctuation.special
+      //  ^ attribute.builtin
+      //                  ^ string
+      restricted(list<address>),
+    }
 }
 

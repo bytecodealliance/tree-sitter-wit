@@ -131,18 +131,16 @@ export default grammar({
       seq(optional($._gate), 'world', field('name', $.id), alias($._world_body, $.body)),
 
     _world_body: ($) =>
-      seq('{', repeat($._world_items), '}'),
+      seq('{', repeat(seq(optional($._gate), $._world_items)), '}'),
 
     _world_items: ($) =>
-      seq(
-        optional($._gate),
-        choice(
-          $.export_item,
-          $.import_item,
-          $.use_item,
-          $._typedef_item,
-          $.include_item,
-        )),
+      choice(
+        $.export_item,
+        $.import_item,
+        $.use_item,
+        $._typedef_item,
+        $.include_item,
+      ),
 
     export_item: ($) =>
       choice(
@@ -189,16 +187,14 @@ export default grammar({
       seq(optional($._gate), 'interface', field('name', $.id), alias($._interface_body, $.body)),
 
     _interface_body: ($) =>
-      seq('{', repeat($._interface_items), '}'),
+      seq('{', repeat(seq(optional($._gate), $._interface_items)), '}'),
 
     _interface_items: ($) =>
-      seq(
-        optional($._gate),
-        choice(
-          $.use_item,
-          seq(optional($.external_id), $._typedef_item),
-          seq(optional($.external_id), $.func_item),
-        )),
+      choice(
+        $.use_item,
+        seq(optional($.external_id), $._typedef_item),
+        seq(optional($.external_id), $.func_item),
+      ),
 
     _typedef_item: ($) =>
       choice(
@@ -248,19 +244,19 @@ export default grammar({
     record_item: ($) =>
       seq('record', field('name', $.id), alias($._record_body, $.body)),
     _record_body: ($) => seq('{', $._record_fields, '}'),
-    _record_fields: ($) => commaSeparatedList($.record_field),
+    _record_fields: ($) => commaSeparatedList(seq(optional($._gate), $.record_field)),
     record_field: ($) => seq(field('name', $.id), ':', field('type', $.ty)),
 
     flags_items: ($) => seq('flags', field('name', $.id), alias($._flags_body, $.body)),
     _flags_body: ($) => seq('{', $._flags_fields, '}'),
-    _flags_fields: ($) => commaSeparatedList(alias($.id, $.flags_field)),
+    _flags_fields: ($) => commaSeparatedList(seq(optional($._gate), alias($.id, $.flags_field))),
 
     variant_items: ($) =>
       seq('variant', field('name', $.id), alias($._variant_body, $.body)),
     _variant_body: ($) =>
       seq('{', $._variant_cases, '}'),
 
-    _variant_cases: ($) => commaSeparatedList($.variant_case),
+    _variant_cases: ($) => commaSeparatedList(seq(optional($._gate), $.variant_case)),
     variant_case: ($) =>
       choice(
         field('name', $.id),
@@ -269,7 +265,7 @@ export default grammar({
 
     enum_items: ($) => seq('enum', field('name', $.id), alias($._enum_body, $.body)),
     _enum_body: ($) => seq('{', $._enum_cases, '}'),
-    _enum_cases: ($) => commaSeparatedList(alias($.id, $.enum_case)),
+    _enum_cases: ($) => commaSeparatedList(seq(optional($._gate), alias($.id, $.enum_case))),
 
     resource_item: ($) =>
       seq(
@@ -278,7 +274,8 @@ export default grammar({
         choice(';', optional(alias($._resource_body, $.body))),
       ),
 
-    _resource_body: ($) => seq('{', repeat(seq(optional($.external_id), $.resource_method)), '}'),
+    _resource_body: ($) => seq(
+      '{', repeat(seq(optional($._gate), optional($.external_id), $.resource_method)), '}'),
 
     resource_method: ($) =>
       choice(
