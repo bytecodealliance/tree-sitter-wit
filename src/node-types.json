@@ -1,6 +1,6 @@
 [
   {
-    "type": "_gate_item",
+    "type": "gate_item",
     "named": true,
     "subtypes": [
       {
@@ -13,6 +13,42 @@
       },
       {
         "type": "unstable_gate",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "package_items",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "interface_item",
+        "named": true
+      },
+      {
+        "type": "toplevel_use_item",
+        "named": true
+      },
+      {
+        "type": "world_item",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "nested_package_definition",
+        "named": true
+      },
+      {
+        "type": "package_decl",
+        "named": true
+      },
+      {
+        "type": "package_items",
         "named": true
       }
     ]
@@ -43,6 +79,32 @@
       },
       {
         "type": "variant_items",
+        "named": true
+      }
+    ]
+  },
+  {
+    "type": "world_definition",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "export_item",
+        "named": true
+      },
+      {
+        "type": "import_item",
+        "named": true
+      },
+      {
+        "type": "include_item",
+        "named": true
+      },
+      {
+        "type": "typedef_item",
+        "named": true
+      },
+      {
+        "type": "use_item",
         "named": true
       }
     ]
@@ -99,15 +161,7 @@
       "required": false,
       "types": [
         {
-          "type": "_gate_item",
-          "named": true
-        },
-        {
           "type": "enum_case",
-          "named": true
-        },
-        {
-          "type": "export_item",
           "named": true
         },
         {
@@ -123,11 +177,7 @@
           "named": true
         },
         {
-          "type": "import_item",
-          "named": true
-        },
-        {
-          "type": "include_item",
+          "type": "gate_item",
           "named": true
         },
         {
@@ -139,15 +189,11 @@
           "named": true
         },
         {
-          "type": "typedef_item",
-          "named": true
-        },
-        {
-          "type": "use_item",
-          "named": true
-        },
-        {
           "type": "variant_case",
+          "named": true
+        },
+        {
+          "type": "world_definition",
           "named": true
         }
       ]
@@ -505,11 +551,11 @@
       "required": true,
       "types": [
         {
-          "type": "_gate_item",
+          "type": "body",
           "named": true
         },
         {
-          "type": "body",
+          "type": "gate_item",
           "named": true
         }
       ]
@@ -632,15 +678,7 @@
           "named": true
         },
         {
-          "type": "interface_item",
-          "named": true
-        },
-        {
-          "type": "toplevel_use_item",
-          "named": true
-        },
-        {
-          "type": "world_item",
+          "type": "package_items",
           "named": true
         }
       ]
@@ -866,23 +904,7 @@
       "required": false,
       "types": [
         {
-          "type": "interface_item",
-          "named": true
-        },
-        {
-          "type": "nested_package_definition",
-          "named": true
-        },
-        {
-          "type": "package_decl",
-          "named": true
-        },
-        {
-          "type": "toplevel_use_item",
-          "named": true
-        },
-        {
-          "type": "world_item",
+          "type": "statement",
           "named": true
         }
       ]
@@ -1177,11 +1199,11 @@
       "required": true,
       "types": [
         {
-          "type": "_gate_item",
+          "type": "body",
           "named": true
         },
         {
-          "type": "body",
+          "type": "gate_item",
           "named": true
         }
       ]
