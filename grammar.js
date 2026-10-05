@@ -66,6 +66,7 @@ export default grammar({
     body_definition: ($) => choice(
       $._world_definition,
       $.func_item,
+      $.resource_method,
     ),
 
     nested_package_definition: $ =>

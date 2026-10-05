@@ -59,6 +59,10 @@
         {
           "type": "SYMBOL",
           "name": "func_item"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "resource_method"
         }
       ]
     },
