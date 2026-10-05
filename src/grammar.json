@@ -28,11 +28,11 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_package_items"
+          "name": "package_items"
         }
       ]
     },
-    "_package_items": {
+    "package_items": {
       "type": "CHOICE",
       "members": [
         {
@@ -46,6 +46,19 @@
         {
           "type": "SYMBOL",
           "name": "interface_item"
+        }
+      ]
+    },
+    "body_definition": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_world_definition"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "func_item"
         }
       ]
     },
@@ -64,7 +77,7 @@
           "type": "REPEAT",
           "content": {
             "type": "SYMBOL",
-            "name": "_package_items"
+            "name": "package_items"
           }
         },
         {
@@ -331,7 +344,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_world_items"
+                "name": "_world_definition"
               }
             ]
           }
@@ -342,7 +355,7 @@
         }
       ]
     },
-    "_world_items": {
+    "_world_definition": {
       "type": "CHOICE",
       "members": [
         {
@@ -750,7 +763,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_interface_items"
+                "name": "_interface_definition"
               }
             ]
           }
@@ -761,7 +774,7 @@
         }
       ]
     },
-    "_interface_items": {
+    "_interface_definition": {
       "type": "CHOICE",
       "members": [
         {
@@ -2701,7 +2714,9 @@
   "inline": [],
   "supertypes": [
     "_gate_item",
-    "typedef_item"
+    "typedef_item",
+    "package_items",
+    "body_definition"
   ],
   "reserved": {}
 }

@@ -31,6 +31,8 @@ export default grammar({
   supertypes: $ => [
     $._gate_item,
     $.typedef_item,
+    $.package_items,
+    $.body_definition,
   ],
 
   conflicts: $ => [
@@ -50,20 +52,26 @@ export default grammar({
     _statement: $ => choice(
       $.package_decl,
       $.nested_package_definition,
-      $._package_items,
+      $.package_items,
     ),
 
-    _package_items: $ => choice(
+    package_items: $ => choice(
       $.toplevel_use_item,
       $.world_item,
       $.interface_item,
+    ),
+
+    // includes world and interface definition items
+    body_definition: ($) => choice(
+      $._world_definition,
+      $.func_item,
     ),
 
     nested_package_definition: $ =>
       seq(
         $.decl_head,
         '{',
-        repeat($._package_items),
+        repeat($.package_items),
         '}',
       ),
 
@@ -131,9 +139,9 @@ export default grammar({
       seq(optional($._gate), 'world', field('name', $.id), alias($._world_body, $.body)),
 
     _world_body: ($) =>
-      seq('{', repeat(seq(optional($._gate), $._world_items)), '}'),
+      seq('{', repeat(seq(optional($._gate), $._world_definition)), '}'),
 
-    _world_items: ($) =>
+    _world_definition: ($) =>
       choice(
         $.export_item,
         $.import_item,
@@ -187,9 +195,9 @@ export default grammar({
       seq(optional($._gate), 'interface', field('name', $.id), alias($._interface_body, $.body)),
 
     _interface_body: ($) =>
-      seq('{', repeat(seq(optional($._gate), $._interface_items)), '}'),
+      seq('{', repeat(seq(optional($._gate), $._interface_definition)), '}'),
 
-    _interface_items: ($) =>
+    _interface_definition: ($) =>
       choice(
         $.use_item,
         seq(optional($.external_id), $.typedef_item),

@@ -18,6 +18,24 @@
     ]
   },
   {
+    "type": "package_items",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "interface_item",
+        "named": true
+      },
+      {
+        "type": "toplevel_use_item",
+        "named": true
+      },
+      {
+        "type": "world_item",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "typedef_item",
     "named": true,
     "subtypes": [
@@ -632,15 +650,7 @@
           "named": true
         },
         {
-          "type": "interface_item",
-          "named": true
-        },
-        {
-          "type": "toplevel_use_item",
-          "named": true
-        },
-        {
-          "type": "world_item",
+          "type": "package_items",
           "named": true
         }
       ]
@@ -866,10 +876,6 @@
       "required": false,
       "types": [
         {
-          "type": "interface_item",
-          "named": true
-        },
-        {
           "type": "nested_package_definition",
           "named": true
         },
@@ -878,11 +884,7 @@
           "named": true
         },
         {
-          "type": "toplevel_use_item",
-          "named": true
-        },
-        {
-          "type": "world_item",
+          "type": "package_items",
           "named": true
         }
       ]
