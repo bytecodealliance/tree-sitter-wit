@@ -18,7 +18,7 @@
     ]
   },
   {
-    "type": "_typedef_item",
+    "type": "typedef_item",
     "named": true,
     "subtypes": [
       {
@@ -103,10 +103,6 @@
           "named": true
         },
         {
-          "type": "_typedef_item",
-          "named": true
-        },
-        {
           "type": "enum_case",
           "named": true
         },
@@ -140,6 +136,10 @@
         },
         {
           "type": "resource_method",
+          "named": true
+        },
+        {
+          "type": "typedef_item",
           "named": true
         },
         {

@@ -30,7 +30,7 @@ export default grammar({
 
   supertypes: $ => [
     $._gate_item,
-    $._typedef_item,
+    $.typedef_item,
   ],
 
   conflicts: $ => [
@@ -138,7 +138,7 @@ export default grammar({
         $.export_item,
         $.import_item,
         $.use_item,
-        $._typedef_item,
+        $.typedef_item,
         $.include_item,
       ),
 
@@ -192,11 +192,11 @@ export default grammar({
     _interface_items: ($) =>
       choice(
         $.use_item,
-        seq(optional($.external_id), $._typedef_item),
+        seq(optional($.external_id), $.typedef_item),
         seq(optional($.external_id), $.func_item),
       ),
 
-    _typedef_item: ($) =>
+    typedef_item: ($) =>
       choice(
         $.resource_item,
         $.variant_items,
@@ -318,7 +318,7 @@ export default grammar({
 
     tuple_list: ($) => commaSeparatedList($.ty),
 
-    uint: _ =>/[1-9][0-9]*/,
+    uint: _ => /[1-9][0-9]*/,
     list: ($) => seq('list',
       '<',
       $.ty,
@@ -405,7 +405,7 @@ export default grammar({
 
     external_id: $ => seq('@', 'external-id', '(', field('id', $.string_literal), ')'),
 
-    unstable_gate: $ => seq( '@', 'unstable', '(', $._feature_field, ')'),
+    unstable_gate: $ => seq('@', 'unstable', '(', $._feature_field, ')'),
     _feature_field: $ => seq('feature', '=', field('feature', $.id)),
 
     since_gate: $ => seq('@', 'since', '(', $._version_field, ')'),

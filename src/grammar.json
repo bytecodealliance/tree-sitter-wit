@@ -359,7 +359,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "_typedef_item"
+          "name": "typedef_item"
         },
         {
           "type": "SYMBOL",
@@ -785,7 +785,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "_typedef_item"
+              "name": "typedef_item"
             }
           ]
         },
@@ -812,7 +812,7 @@
         }
       ]
     },
-    "_typedef_item": {
+    "typedef_item": {
       "type": "CHOICE",
       "members": [
         {
@@ -2701,7 +2701,7 @@
   "inline": [],
   "supertypes": [
     "_gate_item",
-    "_typedef_item"
+    "typedef_item"
   ],
   "reserved": {}
 }
