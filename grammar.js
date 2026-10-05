@@ -33,6 +33,7 @@ export default grammar({
     $.typedef_item,
     $.package_items,
     $.body_definition,
+    $.statement,
   ],
 
   conflicts: $ => [
@@ -46,10 +47,10 @@ export default grammar({
   rules: {
     source_file: ($) =>
       seq(
-        repeat($._statement),
+        repeat($.statement),
       ),
 
-    _statement: $ => choice(
+    statement: $ => choice(
       $.package_decl,
       $.nested_package_definition,
       $.package_items,

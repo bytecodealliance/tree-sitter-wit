@@ -17,7 +17,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 21
-#define SUPERTYPE_COUNT 3
+#define SUPERTYPE_COUNT 4
 
 enum ts_symbol_identifiers {
   sym_id = 1,
@@ -97,7 +97,7 @@ enum ts_symbol_identifiers {
   sym__error_sentinel = 75,
   sym__line_doc_content = 76,
   sym_source_file = 77,
-  sym__statement = 78,
+  sym_statement = 78,
   sym_package_items = 79,
   sym_nested_package_definition = 80,
   sym__uri_head = 81,
@@ -270,7 +270,7 @@ static const char * const ts_symbol_names[] = {
   [sym__error_sentinel] = "_error_sentinel",
   [sym__line_doc_content] = "doc_comment",
   [sym_source_file] = "source_file",
-  [sym__statement] = "_statement",
+  [sym_statement] = "statement",
   [sym_package_items] = "package_items",
   [sym_nested_package_definition] = "nested_package_definition",
   [sym__uri_head] = "_uri_head",
@@ -443,7 +443,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym__error_sentinel] = sym__error_sentinel,
   [sym__line_doc_content] = sym__line_doc_content,
   [sym_source_file] = sym_source_file,
-  [sym__statement] = sym__statement,
+  [sym_statement] = sym_statement,
   [sym_package_items] = sym_package_items,
   [sym_nested_package_definition] = sym_nested_package_definition,
   [sym__uri_head] = sym__uri_head,
@@ -850,9 +850,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym__statement] = {
+  [sym_statement] = {
     .visible = false,
     .named = true,
+    .supertype = true,
   },
   [sym_package_items] = {
     .visible = false,
@@ -1712,13 +1713,15 @@ static const TSStateId ts_primary_state_ids[STATE_COUNT] = {
 static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
   sym__gate_item,
   sym_package_items,
+  sym_statement,
   sym_typedef_item,
 };
 
 static const TSMapSlice ts_supertype_map_slices[] = {
   [sym__gate_item] = {.index = 0, .length = 3},
   [sym_package_items] = {.index = 3, .length = 3},
-  [sym_typedef_item] = {.index = 6, .length = 6},
+  [sym_statement] = {.index = 6, .length = 3},
+  [sym_typedef_item] = {.index = 9, .length = 6},
 };
 
 static const TSSymbol ts_supertype_map_entries[] = {
@@ -1731,6 +1734,10 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_toplevel_use_item,
     sym_world_item,
   [6] =
+    sym_nested_package_definition,
+    sym_package_decl,
+    sym_package_items,
+  [9] =
     sym_enum_items,
     sym_flags_items,
     sym_record_item,
@@ -3216,7 +3223,7 @@ static const uint16_t ts_parse_table[LARGE_STATE_COUNT][SYMBOL_COUNT] = {
   },
   [STATE(1)] = {
     [sym_source_file] = STATE(356),
-    [sym__statement] = STATE(136),
+    [sym_statement] = STATE(136),
     [sym_package_items] = STATE(131),
     [sym_nested_package_definition] = STATE(131),
     [sym_decl_head] = STATE(252),
@@ -4564,7 +4571,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(93), 1,
       aux_sym__gate,
     STATE(136), 1,
-      sym__statement,
+      sym_statement,
     STATE(252), 1,
       sym_decl_head,
     STATE(26), 2,
@@ -4604,7 +4611,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(93), 1,
       aux_sym__gate,
     STATE(136), 1,
-      sym__statement,
+      sym_statement,
     STATE(252), 1,
       sym_decl_head,
     STATE(27), 3,
@@ -10434,7 +10441,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [462] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_decl_head, 4, 0, 0),
   [464] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_nested_package_definition, 4, 0, 0),
   [466] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_package_decl, 2, 0, 0),
-  [468] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__statement, 1, 0, 0),
+  [468] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_statement, 1, 0, 0),
   [470] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_result, 1, 0, 0),
   [472] = {.entry = {.count = 1, .reusable = true}}, SHIFT(3),
   [474] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_stream, 1, 0, 0),

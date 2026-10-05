@@ -36,6 +36,24 @@
     ]
   },
   {
+    "type": "statement",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "nested_package_definition",
+        "named": true
+      },
+      {
+        "type": "package_decl",
+        "named": true
+      },
+      {
+        "type": "package_items",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "typedef_item",
     "named": true,
     "subtypes": [
@@ -876,15 +894,7 @@
       "required": false,
       "types": [
         {
-          "type": "nested_package_definition",
-          "named": true
-        },
-        {
-          "type": "package_decl",
-          "named": true
-        },
-        {
-          "type": "package_items",
+          "type": "statement",
           "named": true
         }
       ]
