@@ -30,10 +30,10 @@ export default grammar({
 
   supertypes: $ => [
     $.gate_item,
-    $.typedef_item,
     $.package_items,
-    $.body_definition,
     $.statement,
+    $.world_definition,
+    $.typedef_item,
   ],
 
   conflicts: $ => [
@@ -60,13 +60,6 @@ export default grammar({
       $.toplevel_use_item,
       $.world_item,
       $.interface_item,
-    ),
-
-    // includes world and interface definition items
-    body_definition: ($) => choice(
-      $._world_definition,
-      $.func_item,
-      $.resource_method,
     ),
 
     nested_package_definition: $ =>
@@ -141,9 +134,9 @@ export default grammar({
       seq(optional($._gate), 'world', field('name', $.id), alias($._world_body, $.body)),
 
     _world_body: ($) =>
-      seq('{', repeat(seq(optional($._gate), $._world_definition)), '}'),
+      seq('{', repeat(seq(optional($._gate), $.world_definition)), '}'),
 
-    _world_definition: ($) =>
+    world_definition: ($) =>
       choice(
         $.export_item,
         $.import_item,
@@ -202,8 +195,7 @@ export default grammar({
     _interface_definition: ($) =>
       choice(
         $.use_item,
-        seq(optional($.external_id), $.typedef_item),
-        seq(optional($.external_id), $.func_item),
+        seq(optional($.external_id), choice($.typedef_item, $.func_item)),
       ),
 
     typedef_item: ($) =>

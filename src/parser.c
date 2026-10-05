@@ -17,7 +17,7 @@
 #define MAX_ALIAS_SEQUENCE_LENGTH 6
 #define MAX_RESERVED_WORD_SET_SIZE 0
 #define PRODUCTION_ID_COUNT 21
-#define SUPERTYPE_COUNT 4
+#define SUPERTYPE_COUNT 5
 
 enum ts_symbol_identifiers {
   sym_id = 1,
@@ -109,7 +109,7 @@ enum ts_symbol_identifiers {
   sym_use_path = 87,
   sym_world_item = 88,
   sym__world_body = 89,
-  sym__world_definition = 90,
+  sym_world_definition = 90,
   sym_export_item = 91,
   sym_import_item = 92,
   sym_extern_type = 93,
@@ -282,7 +282,7 @@ static const char * const ts_symbol_names[] = {
   [sym_use_path] = "use_path",
   [sym_world_item] = "world_item",
   [sym__world_body] = "body",
-  [sym__world_definition] = "_world_definition",
+  [sym_world_definition] = "world_definition",
   [sym_export_item] = "export_item",
   [sym_import_item] = "import_item",
   [sym_extern_type] = "extern_type",
@@ -455,7 +455,7 @@ static const TSSymbol ts_symbol_map[] = {
   [sym_use_path] = sym_use_path,
   [sym_world_item] = sym_world_item,
   [sym__world_body] = sym__world_body,
-  [sym__world_definition] = sym__world_definition,
+  [sym_world_definition] = sym_world_definition,
   [sym_export_item] = sym_export_item,
   [sym_import_item] = sym_import_item,
   [sym_extern_type] = sym_extern_type,
@@ -900,9 +900,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
     .visible = true,
     .named = true,
   },
-  [sym__world_definition] = {
+  [sym_world_definition] = {
     .visible = false,
     .named = true,
+    .supertype = true,
   },
   [sym_export_item] = {
     .visible = true,
@@ -1715,6 +1716,7 @@ static const TSSymbol ts_supertype_symbols[SUPERTYPE_COUNT] = {
   sym_package_items,
   sym_statement,
   sym_typedef_item,
+  sym_world_definition,
 };
 
 static const TSMapSlice ts_supertype_map_slices[] = {
@@ -1722,6 +1724,7 @@ static const TSMapSlice ts_supertype_map_slices[] = {
   [sym_package_items] = {.index = 3, .length = 3},
   [sym_statement] = {.index = 6, .length = 3},
   [sym_typedef_item] = {.index = 9, .length = 6},
+  [sym_world_definition] = {.index = 15, .length = 5},
 };
 
 static const TSSymbol ts_supertype_map_entries[] = {
@@ -1744,6 +1747,12 @@ static const TSSymbol ts_supertype_map_entries[] = {
     sym_resource_item,
     sym_type_item,
     sym_variant_items,
+  [15] =
+    sym_export_item,
+    sym_import_item,
+    sym_include_item,
+    sym_typedef_item,
+    sym_use_item,
 };
 
 static bool ts_lex(TSLexer *lexer, TSStateId state) {
@@ -4145,7 +4154,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(36), 1,
       sym_gate_item,
     STATE(60), 1,
-      sym__world_definition,
+      sym_world_definition,
     STATE(231), 1,
       sym_external_id,
     STATE(18), 2,
@@ -4202,7 +4211,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(36), 1,
       sym_gate_item,
     STATE(60), 1,
-      sym__world_definition,
+      sym_world_definition,
     STATE(231), 1,
       sym_external_id,
     STATE(19), 3,
@@ -4262,7 +4271,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(36), 1,
       sym_gate_item,
     STATE(60), 1,
-      sym__world_definition,
+      sym_world_definition,
     STATE(231), 1,
       sym_external_id,
     STATE(20), 2,
@@ -4317,7 +4326,7 @@ static const uint16_t ts_small_parse_table[] = {
     STATE(36), 1,
       sym_gate_item,
     STATE(71), 1,
-      sym__world_definition,
+      sym_world_definition,
     STATE(231), 1,
       sym_external_id,
     STATE(21), 2,
@@ -10369,7 +10378,7 @@ static const TSParseActionEntry ts_parse_actions[] = {
   [316] = {.entry = {.count = 1, .reusable = true}}, REDUCE(aux_sym__world_body_repeat1, 1, 0, 0),
   [318] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_include_item, 4, 0, 0),
   [320] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_export_item, 3, 0, 0),
-  [322] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym__world_definition, 1, 0, 0),
+  [322] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_world_definition, 1, 0, 0),
   [324] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_extern_type, 2, 0, 0),
   [326] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_export_item, 5, 0, 4),
   [328] = {.entry = {.count = 1, .reusable = true}}, REDUCE(sym_import_item, 5, 0, 4),

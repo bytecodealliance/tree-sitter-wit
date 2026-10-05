@@ -84,6 +84,32 @@
     ]
   },
   {
+    "type": "world_definition",
+    "named": true,
+    "subtypes": [
+      {
+        "type": "export_item",
+        "named": true
+      },
+      {
+        "type": "import_item",
+        "named": true
+      },
+      {
+        "type": "include_item",
+        "named": true
+      },
+      {
+        "type": "typedef_item",
+        "named": true
+      },
+      {
+        "type": "use_item",
+        "named": true
+      }
+    ]
+  },
+  {
     "type": "alias_item",
     "named": true,
     "fields": {
@@ -139,10 +165,6 @@
           "named": true
         },
         {
-          "type": "export_item",
-          "named": true
-        },
-        {
           "type": "external_id",
           "named": true
         },
@@ -159,14 +181,6 @@
           "named": true
         },
         {
-          "type": "import_item",
-          "named": true
-        },
-        {
-          "type": "include_item",
-          "named": true
-        },
-        {
           "type": "record_field",
           "named": true
         },
@@ -175,15 +189,11 @@
           "named": true
         },
         {
-          "type": "typedef_item",
-          "named": true
-        },
-        {
-          "type": "use_item",
-          "named": true
-        },
-        {
           "type": "variant_case",
+          "named": true
+        },
+        {
+          "type": "world_definition",
           "named": true
         }
       ]

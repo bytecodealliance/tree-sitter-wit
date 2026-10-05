@@ -49,23 +49,6 @@
         }
       ]
     },
-    "body_definition": {
-      "type": "CHOICE",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "_world_definition"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "func_item"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "resource_method"
-        }
-      ]
-    },
     "nested_package_definition": {
       "type": "SEQ",
       "members": [
@@ -348,7 +331,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "_world_definition"
+                "name": "world_definition"
               }
             ]
           }
@@ -359,7 +342,7 @@
         }
       ]
     },
-    "_world_definition": {
+    "world_definition": {
       "type": "CHOICE",
       "members": [
         {
@@ -801,29 +784,17 @@
               ]
             },
             {
-              "type": "SYMBOL",
-              "name": "typedef_item"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
               "type": "CHOICE",
               "members": [
                 {
                   "type": "SYMBOL",
-                  "name": "external_id"
+                  "name": "typedef_item"
                 },
                 {
-                  "type": "BLANK"
+                  "type": "SYMBOL",
+                  "name": "func_item"
                 }
               ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "func_item"
             }
           ]
         }
@@ -2718,10 +2689,10 @@
   "inline": [],
   "supertypes": [
     "gate_item",
-    "typedef_item",
     "package_items",
-    "body_definition",
-    "statement"
+    "statement",
+    "world_definition",
+    "typedef_item"
   ],
   "reserved": {}
 }
