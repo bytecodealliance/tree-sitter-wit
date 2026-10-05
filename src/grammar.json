@@ -2504,10 +2504,10 @@
       "type": "REPEAT1",
       "content": {
         "type": "SYMBOL",
-        "name": "_gate_item"
+        "name": "gate_item"
       }
     },
-    "_gate_item": {
+    "gate_item": {
       "type": "CHOICE",
       "members": [
         {
@@ -2717,7 +2717,7 @@
   ],
   "inline": [],
   "supertypes": [
-    "_gate_item",
+    "gate_item",
     "typedef_item",
     "package_items",
     "body_definition",

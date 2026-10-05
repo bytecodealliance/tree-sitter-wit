@@ -1,6 +1,6 @@
 [
   {
-    "type": "_gate_item",
+    "type": "gate_item",
     "named": true,
     "subtypes": [
       {
@@ -135,10 +135,6 @@
       "required": false,
       "types": [
         {
-          "type": "_gate_item",
-          "named": true
-        },
-        {
           "type": "enum_case",
           "named": true
         },
@@ -156,6 +152,10 @@
         },
         {
           "type": "func_item",
+          "named": true
+        },
+        {
+          "type": "gate_item",
           "named": true
         },
         {
@@ -541,11 +541,11 @@
       "required": true,
       "types": [
         {
-          "type": "_gate_item",
+          "type": "body",
           "named": true
         },
         {
-          "type": "body",
+          "type": "gate_item",
           "named": true
         }
       ]
@@ -1189,11 +1189,11 @@
       "required": true,
       "types": [
         {
-          "type": "_gate_item",
+          "type": "body",
           "named": true
         },
         {
-          "type": "body",
+          "type": "gate_item",
           "named": true
         }
       ]

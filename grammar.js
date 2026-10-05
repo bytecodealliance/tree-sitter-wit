@@ -29,7 +29,7 @@ export default grammar({
   ],
 
   supertypes: $ => [
-    $._gate_item,
+    $.gate_item,
     $.typedef_item,
     $.package_items,
     $.body_definition,
@@ -406,8 +406,8 @@ export default grammar({
     //
     // feature-field ::= 'feature' '=' id
     // version-field ::= 'version' '=' <valid semver>
-    _gate: $ => repeat1($._gate_item),
-    _gate_item: $ => choice(
+    _gate: $ => repeat1($.gate_item),
+    gate_item: $ => choice(
       $.unstable_gate,
       $.since_gate,
       $.deprecated_gate,
