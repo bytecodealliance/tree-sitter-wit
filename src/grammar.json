@@ -2689,10 +2689,10 @@
   "inline": [],
   "supertypes": [
     "gate_item",
-    "package_items",
     "statement",
+    "typedef_item",
     "world_definition",
-    "typedef_item"
+    "package_items"
   ],
   "reserved": {}
 }

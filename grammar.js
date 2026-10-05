@@ -30,10 +30,10 @@ export default grammar({
 
   supertypes: $ => [
     $.gate_item,
-    $.package_items,
     $.statement,
-    $.world_definition,
     $.typedef_item,
+    $.world_definition,
+    $.package_items,
   ],
 
   conflicts: $ => [
